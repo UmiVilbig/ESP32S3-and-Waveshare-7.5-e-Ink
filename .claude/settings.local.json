@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip show *)",
+      "Bash(Select-Object -First 5)",
+      "PowerShell(pip show *)",
+      "PowerShell(pip install *)",
+      "Bash(python -c \"from mcp.server.fastmcp import FastMCP; print\\('FastMCP import OK'\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(python *)"
+    ]
+  }
+}

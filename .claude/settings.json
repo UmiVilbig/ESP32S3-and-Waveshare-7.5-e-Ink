@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "eink-display": {
+      "command": "python",
+      "args": ["C:\\Users\\Umi\\Documents\\Arduino\\heart_stream\\eink_server.py"]
+    }
+  }
+}
