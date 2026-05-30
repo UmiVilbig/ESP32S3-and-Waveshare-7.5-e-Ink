@@ -7,8 +7,8 @@ import os
 mcp = FastMCP("eink-display")
 
 W, H = 800, 480
-ESP32_IP = "192.168.1.240"
-ESP32_PORT = 8080
+ESP32_IP = os.environ.get("ESP32_IP", "192.168.1.240")
+ESP32_PORT = int(os.environ.get("ESP32_PORT", "8080"))
 BMP_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "screen.bmp")
 
 
