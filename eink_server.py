@@ -1,15 +1,16 @@
 from mcp.server.fastmcp import FastMCP
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 import socket
 import struct
 import os
+import tempfile
+import io
 
 mcp = FastMCP("eink-display")
 
 W, H = 800, 480
 ESP32_IP = os.environ.get("ESP32_IP", "192.168.1.240")
 ESP32_PORT = int(os.environ.get("ESP32_PORT", "8080"))
-BMP_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "screen.bmp")
 
 
 def render_image(lines: list[str]) -> bytes:
@@ -20,9 +21,9 @@ def render_image(lines: list[str]) -> bytes:
     for line in lines:
         draw.text((40, y), line, fill=0)
         y += 60
-    img.save(BMP_PATH)
-    with open(BMP_PATH, "rb") as f:
-        return f.read()
+    buf = io.BytesIO()
+    img.save(buf, format="BMP")
+    return buf.getvalue()
 
 
 def send_to_esp32(data: bytes) -> str:
@@ -42,9 +43,16 @@ def send_to_esp32(data: bytes) -> str:
 def send_to_display(lines: list[str]) -> str:
     """Render text lines onto the 800x480 e-ink display connected via ESP32.
     Each string in `lines` is drawn on its own row."""
-    data = render_image(lines)
-    response = send_to_esp32(data)
-    return f"Sent {len(data)} bytes. Response: {response}"
+    try:
+        data = render_image(lines)
+        response = send_to_esp32(data)
+        return f"Sent {len(data)} bytes to {ESP32_IP}:{ESP32_PORT}. ESP32 response: {response}"
+    except ConnectionRefusedError:
+        return f"ERROR: Connection refused at {ESP32_IP}:{ESP32_PORT}. Is the ESP32 powered on and connected to WiFi?"
+    except socket.timeout:
+        return f"ERROR: Connection timed out reaching {ESP32_IP}:{ESP32_PORT}. Check the IP address and network."
+    except Exception as e:
+        return f"ERROR: {type(e).__name__}: {e}"
 
 
 if __name__ == "__main__":
