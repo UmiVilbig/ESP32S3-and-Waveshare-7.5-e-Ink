@@ -2,7 +2,7 @@
   "name": "eink-display",
   "version": "1.0.0",
   "description": "Send text and images to an ESP32-connected 800x480 e-ink display over WiFi",
-  "main": "eink_server.py",
+  "main": "index.js",
   "scripts": {
     "start": "python eink_server.py"
   },
@@ -15,5 +15,12 @@
     "esp32",
     "display"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "openclaw": {
+    "extensions": ["./index.js"],
+    "compat": {
+      "pluginApi": ">=2026.1.0",
+      "minGatewayVersion": "2026.1.0"
+    }
+  }
 }

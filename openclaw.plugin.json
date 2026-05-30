@@ -1,0 +1,51 @@
+{
+  "id": "eink-display",
+  "name": "E-Ink Display",
+  "description": "Send text to an ESP32-connected 800x480 e-ink display over WiFi",
+  "version": "1.0.0",
+  "skills": ["./skills"],
+  "contracts": {
+    "tools": ["send_to_display"]
+  },
+  "toolMetadata": {
+    "send_to_display": {
+      "configSignals": [
+        {
+          "rootPath": "plugins.entries.eink-display.config",
+          "required": ["esp32Ip"]
+        }
+      ]
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "esp32Ip": {
+        "type": "string",
+        "default": "192.168.1.240"
+      },
+      "esp32Port": {
+        "type": "integer",
+        "default": 8080
+      }
+    }
+  },
+  "uiHints": {
+    "esp32Ip": {
+      "label": "ESP32 IP Address",
+      "placeholder": "192.168.1.240"
+    },
+    "esp32Port": {
+      "label": "ESP32 Port",
+      "placeholder": "8080"
+    }
+  },
+  "setup": {
+    "requiresRuntime": false
+  },
+  "activation": {
+    "onStartup": false,
+    "onCapabilities": ["tool"]
+  }
+}
