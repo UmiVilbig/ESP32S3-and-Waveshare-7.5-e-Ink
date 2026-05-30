@@ -4,6 +4,7 @@ description: Send text and images to an ESP32-connected 800x480 e-ink display ov
 version: 1.0.0
 command-dispatch: tool
 command-tool: send_to_display
+disable-model-invocation: false
 openclaw:
   emoji: "🖥"
   requires:
@@ -14,28 +15,36 @@ openclaw:
   primaryEnv: ESP32_IP
 ---
 
-# E-Ink Display Skill
+# E-Ink Display
 
-You MUST use the `send_to_display` MCP tool to interact with the e-ink display. Do NOT attempt to connect to the ESP32 directly via HTTP, TCP, curl, or any other method. The MCP server handles the connection protocol internally.
+IMPORTANT: You MUST call the `send_to_display` tool to use this skill. Do NOT attempt to connect to the ESP32 yourself. Do NOT use HTTP, curl, TCP, UDP, or any direct network requests. The `send_to_display` tool handles the entire protocol internally.
 
-## How to use
+## Usage
 
-Call the `send_to_display` tool with a `lines` parameter — an array of strings. Each string is rendered as one row of text on the 800x480 e-ink screen.
+Call the `send_to_display` tool with one argument:
 
-Example tool call:
+- **lines** (array of strings): Each string is rendered as one row on the display.
+
+Example:
 ```json
 {
   "name": "send_to_display",
   "arguments": {
-    "lines": ["Hello World", "Line two goes here"]
+    "lines": ["Hello World"]
   }
 }
 ```
 
-## Rules
+## Constraints
 
-- Always use the `send_to_display` MCP tool. Never make direct network requests to the ESP32.
-- Keep lines under 70 characters to fit the 800px width.
-- Send at most 7 lines per call (drawable area is ~420px tall at 60px spacing).
-- The display is black and white only.
-- If the tool returns an error, tell the user to check that ESP32_IP is correct and the device is powered on.
+- Maximum 7 lines per call.
+- Keep each line under 70 characters.
+- Black and white only.
+- If the tool returns an error, tell the user to verify ESP32_IP and that the device is on.
+
+## What NOT to do
+
+- Do NOT make HTTP requests to the ESP32.
+- Do NOT send raw TCP or UDP packets.
+- Do NOT try to guess the device protocol.
+- ONLY use the `send_to_display` tool.
