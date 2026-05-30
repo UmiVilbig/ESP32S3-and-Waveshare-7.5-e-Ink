@@ -12,7 +12,7 @@ draw = ImageDraw.Draw(img)
 
 draw.rectangle([20, 20, 780, 460], outline=0, width=3)
 draw.text((40, 40),  "Hello from Python!", fill=0)
-draw.text((40, 100), "Line two goes here",  fill=0)
+draw.text((40, 100), "yo",  fill=0)
 
 # Save as 1-bit BMP and read bytes
 img.save("screen.bmp")
