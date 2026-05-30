@@ -9,8 +9,8 @@ import io
 mcp = FastMCP("eink-display")
 
 W, H = 800, 480
-ESP32_IP = os.environ.get("ESP32_IP", "192.168.1.240")
-ESP32_PORT = int(os.environ.get("ESP32_PORT", "8080"))
+ESP32_IP = os.environ.get("ESP32_IP") or "192.168.1.240"
+ESP32_PORT = int(os.environ.get("ESP32_PORT") or "8080")
 
 
 def render_image(lines: list[str]) -> bytes:

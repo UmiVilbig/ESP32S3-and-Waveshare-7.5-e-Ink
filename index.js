@@ -10,7 +10,7 @@ export default definePluginEntry({
       {
         name: "send_to_display",
         description:
-          "Render text lines onto the 800x480 e-ink display connected via ESP32. Each string in lines is drawn on its own row.",
+          "Send text to the 800x480 e-ink display. Pass an array of strings — each is rendered on its own row. This tool handles all rendering and network communication automatically; do NOT make direct HTTP or TCP requests to the ESP32.",
         parameters: Type.Object({
           lines: Type.Array(Type.String(), {
             description: "Text lines to display, one per row",

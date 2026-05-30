@@ -2,11 +2,7 @@
   "mcpServers": {
     "eink-display": {
       "command": "python",
-      "args": ["eink_server.py"],
-      "env": {
-        "ESP32_IP": "${ESP32_IP}",
-        "ESP32_PORT": "${ESP32_PORT}"
-      }
+      "args": ["eink_server.py"]
     }
   }
 }
