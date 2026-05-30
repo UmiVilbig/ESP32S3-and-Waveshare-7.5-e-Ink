@@ -2,6 +2,7 @@
   "name": "eink-display",
   "version": "1.0.0",
   "description": "Send text and images to an ESP32-connected 800x480 e-ink display over WiFi",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "python eink_server.py"
