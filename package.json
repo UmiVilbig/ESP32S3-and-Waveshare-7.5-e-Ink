@@ -18,10 +18,15 @@
   ],
   "license": "MIT",
   "openclaw": {
-    "extensions": ["./index.js"],
+    "extensions": [
+      "./index.js"
+    ],
     "compat": {
       "pluginApi": ">=2026.1.0",
       "minGatewayVersion": "2026.1.0"
     }
+  },
+  "dependencies": {
+    "@sinclair/typebox": "^0.34.49"
   }
 }
