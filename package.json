@@ -1,0 +1,19 @@
+{
+  "name": "eink-display",
+  "version": "1.0.0",
+  "description": "Send text and images to an ESP32-connected 800x480 e-ink display over WiFi",
+  "main": "eink_server.py",
+  "scripts": {
+    "start": "python eink_server.py"
+  },
+  "keywords": [
+    "openclaw",
+    "skill",
+    "mcp",
+    "eink",
+    "e-ink",
+    "esp32",
+    "display"
+  ],
+  "license": "MIT"
+}
