@@ -15,7 +15,7 @@
     }
   },
   "contracts": {
-    "tools": ["send_to_display"]
+    "tools": ["send_to_display", "draw_on_display", "send_svg_to_display", "list_icons"]
   },
   "toolMetadata": {
     "send_to_display": {
