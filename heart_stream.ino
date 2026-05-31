@@ -244,15 +244,26 @@ void loop() {
     }
   }
 
-  Serial.println("Received " + String(bytesRead) + " bytes");
-  client.print("OK");
-  client.stop();
+  Serial.println("Received " + String(bytesRead) + "/" + String(dataLen) + " bytes");
 
-  if (bytesRead >= 54) {
-    displayBitmap(bmpData, bytesRead);
-  } else {
-    Serial.println("Not enough data");
+  if (bytesRead < dataLen) {
+    Serial.println("Incomplete transfer!");
+    client.print("ERR:incomplete:" + String(bytesRead) + "/" + String(dataLen));
+    client.stop();
+    free(bmpData);
+    return;
   }
 
+  if (bytesRead < 54) {
+    Serial.println("Not enough data for BMP header");
+    client.print("ERR:too_small");
+    client.stop();
+    free(bmpData);
+    return;
+  }
+
+  displayBitmap(bmpData, bytesRead);
+  client.print("OK:" + String(bytesRead));
+  client.stop();
   free(bmpData);
 }

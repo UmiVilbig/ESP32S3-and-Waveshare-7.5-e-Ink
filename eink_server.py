@@ -861,13 +861,15 @@ def to_bmp(img: Image.Image) -> bytes:
 
 def send_to_esp32(data: bytes) -> str:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.settimeout(10)
+    sock.settimeout(15)
     try:
         sock.connect((ESP32_IP, ESP32_PORT))
         sock.sendall(struct.pack("<I", len(data)))
         sock.sendall(data)
-        response = sock.recv(1024)
-        return response.decode()
+        response = sock.recv(1024).decode()
+        if response.startswith("ERR:"):
+            raise RuntimeError(f"ESP32 rejected data: {response}")
+        return response
     finally:
         sock.close()
 
