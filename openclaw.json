@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "eink-display": {
-      "command": "python",
-      "args": ["eink_server.py"]
-    }
-  }
-}

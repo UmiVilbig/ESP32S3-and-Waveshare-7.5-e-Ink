@@ -1,1 +1,13 @@
-node_modules/
+# Host test build artifacts
+/test/run_tests
+/test/run_tests.exe
+*.o
+
+# Arduino build output
+/build/
+*.elf
+*.bin
+*.hex
+
+# Editor/OS
+.DS_Store

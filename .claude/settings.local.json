@@ -10,7 +10,27 @@
       "Bash(python *)",
       "PowerShell(Invoke-WebRequest -Uri \"https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/webfonts/fa-solid-900.ttf\" -OutFile \"C:\\\\Users\\\\Umi\\\\Documents\\\\Arduino\\\\heart_stream\\\\fonts\\\\fa-solid-900.ttf\")",
       "PowerShell(Invoke-WebRequest -Uri \"https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/webfonts/fa-regular-400.ttf\" -OutFile \"C:\\\\Users\\\\Umi\\\\Documents\\\\Arduino\\\\heart_stream\\\\fonts\\\\fa-regular-400.ttf\")",
-      "PowerShell(Invoke-WebRequest -Uri \"https://raw.githubusercontent.com/erikflowers/weather-icons/master/font/weathericons-regular-webfont.ttf\" -OutFile \"C:\\\\Users\\\\Umi\\\\Documents\\\\Arduino\\\\heart_stream\\\\fonts\\\\weathericons-regular-webfont.ttf\")"
+      "PowerShell(Invoke-WebRequest -Uri \"https://raw.githubusercontent.com/erikflowers/weather-icons/master/font/weathericons-regular-webfont.ttf\" -OutFile \"C:\\\\Users\\\\Umi\\\\Documents\\\\Arduino\\\\heart_stream\\\\fonts\\\\weathericons-regular-webfont.ttf\")",
+      "Bash(g++ --version)",
+      "Bash(make --version)",
+      "PowerShell($c = 'g++','gcc','clang++','clang','cl','cpp','arduino-cli'; foreach\\($x in $c\\){ $p=\\(Get-Command $x -ErrorAction SilentlyContinue\\).Source; if\\($p\\){ \"$x -> $p\" } else { \"$x -> NOT FOUND\" } })",
+      "Bash(rm -rf node_modules fonts skills)",
+      "Bash(rm -f eink_server.py index.js main.py openclaw.json openclaw.plugin.json package.json package-lock.json requirements.txt screen.bmp heart_stream.ino)",
+      "Bash(git mv *)",
+      "Read(//c/Users/Umi/Documents/Arduino/**)",
+      "Bash(mv heart_stream smart-eink-display)",
+      "Bash(arduino-cli version *)",
+      "Read(//c/Users/Umi/AppData/Local/Arduino15/**)",
+      "Bash(arduino-cli board *)",
+      "Bash('C:/Program Files/Arduino IDE/resources/app/lib/backend/resources/arduino-cli.exe' version)",
+      "Bash('C:/Program Files/Arduino IDE/resources/app/lib/backend/resources/arduino-cli.exe' lib list)",
+      "Bash('C:/Program Files/Arduino IDE/resources/app/lib/backend/resources/arduino-cli.exe' board listall)",
+      "Bash('C:/Program Files/Arduino IDE/resources/app/lib/backend/resources/arduino-cli.exe' lib install ArduinoJson)",
+      "Bash('C:/Program Files/Arduino IDE/resources/app/lib/backend/resources/arduino-cli.exe' compile --fqbn esp32:esp32:esp32s3 C:/Users/Umi/Documents/Arduino/smart-eink-display)",
+      "Bash($CLI board *)",
+      "Bash('C:/Program Files/Arduino IDE/resources/app/lib/backend/resources/arduino-cli.exe' upload -p COM3 --fqbn esp32:esp32:esp32s3 C:/Users/Umi/Documents/Arduino/smart-eink-display)",
+      "Bash(make)",
+      "Bash(echo \"exit=$?\")"
     ]
   }
 }
